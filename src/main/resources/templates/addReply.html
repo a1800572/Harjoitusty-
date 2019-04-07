@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+</head>
+<body>
+	<h1>Add Reply</h1>
+	<form
+	class="form-control"
+	name="replyId"
+	th:object="${reply}"
+	th:action="@{/comment/{id}/replies(id=${comment.id})}"
+	method="get" 
+	enctype="multipart/form-data" >
+
+	<textarea id="reply" th:field="*{text}" rows="5" cols="65"></textarea>
+	
+	<input type="submit" name="action" class="btn btn-primary" value="Save"></input>
+	</form>
+
+</body>
+</html>
