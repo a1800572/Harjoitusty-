@@ -22,7 +22,9 @@ public class CommentController {
 	@Autowired
 	MetalRepository mrepository;
 	
-	//muista vaihtaa nimi indeksiksi
+	
+	//index controlleriin
+	//muista vaihtaa nimi indek
 	@RequestMapping(value="/commentlist")
 	public String commentList(Model model) {
 		model.addAttribute("metals",mrepository.findAll());

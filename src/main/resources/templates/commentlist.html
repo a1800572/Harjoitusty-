@@ -11,8 +11,6 @@
     background-color: black;
     border-radius: 10px;
     border: 2px solid red;
-    
-    
     }
     .replycontainer{
     color: black;
@@ -21,10 +19,7 @@
     border: 2px solid black;
     width: 1140px;
     margin: 0 auto;
-    
-    
     }
-    
     .info{
     color: white;
     font-family: Helvetica;
@@ -33,13 +28,10 @@
     color: white;
     font-family: Helvetica;
     }
-    
     .user{
     color: white;
     font-family: Helvetica;
-  
     }
-    
     .replyuser{
     color: white;
     font-family: Helvetica;
@@ -48,15 +40,17 @@
     word-wrap: break-word;
    	width: 100%;
     }
-    
-    
-    
     </style>
 </head>
 <body>
 
 
 		<h1>Tapahtumat</h1>
+		
+		<a href="/newmetal">
+		<button class="btn btn-success ">Lisää Metalli</button>
+		</a>
+		<div style="clear: both; display: block; height: 15px;"></div>
 
 
 		<table class="table table-striped">
@@ -72,17 +66,17 @@
     	
     	
 		
-		<h1 th:text = "#{welcome.text}"></h1>
+			<h1 th:text = "#{welcome.text}"></h1>
 		
 		
 		
-		<form th:object="${comment}" th:action="@{/savecomment}" action="#" method="post">
+			<form th:object="${comment}" th:action="@{/savecomment}" action="#" method="post">
 			
 			<textarea id="komment" th:field="*{text}" rows="2" cols="65"></textarea>
 			<div style="clear: both; display: block; height: 5px;"></div>
 			<input type="submit" value="Jätä kommentti"></input>
 			<div style="clear: both; display: block; height: 5px;"></div>
-		</form>
+			</form>
 
    		 
 			

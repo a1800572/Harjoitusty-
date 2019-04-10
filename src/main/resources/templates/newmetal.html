@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 "/>
+<link type="text/css"rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>metal form</title>
+</head>
+<body>
+
+
+<form method="post" action="#" th:action=@{/savemetal} th:object=${metal}>
+<h1>Metal details</h1>
+
+
+<label>Ammount:</label>
+<br>
+<input class="col-sm-2 form-control-sm"
+ placeholder="Enter ammount"
+ type="number"
+ th:field=${metal.ammount}
+ name="ammount"
+ id="ammount"/>
+
+<div style="clear: both; display: block; height: 15px;" ></div>
+
+<input class="btn btn-success" type="submit" value="Lähetä"/>
+<input class="btn btn-success" type="reset" value="Reset" />
+</form>
+</body>
+</html>
+
