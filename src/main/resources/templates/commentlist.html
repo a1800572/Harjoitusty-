@@ -40,6 +40,7 @@
     </style>
 </head>
 <body>
+		<h1 th:text = "#{welcome.text}"></h1>
 		<h1>Comments</h1>
 		
 		<form th:object="${comment}" th:action="@{/savecomment}" action="#" method="post">
