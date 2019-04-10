@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import Project.Investment.domain.Comment;
 import Project.Investment.domain.CommentRepository;
+import Project.Investment.domain.Metal;
+import Project.Investment.domain.MetalRepository;
 import Project.Investment.domain.Reply;
 import Project.Investment.domain.ReplyRepository;
 
@@ -26,12 +28,16 @@ public class InvestmentApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository) {
+	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository) {
 		return (args)->{
 			log.info("pari kommentia");
 			
+			//testi metallit
+			mrepository.save(new Metal(12));
+			mrepository.save(new Metal(3));
 			
 			
+			//testi kommentit
 			crepository.save(new Comment("Pekka","aaaaaaaaaaaaaaaaaaaaaa"));
 			crepository.save(new Comment("Vilma","bbbbbbbbbbbbbb"));
 			crepository.save(new Comment("Juho","ccccccccccccccccccccc"));

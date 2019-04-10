@@ -9,15 +9,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import Project.Investment.domain.Comment;
 import Project.Investment.domain.CommentRepository;
+import Project.Investment.domain.MetalRepository;
 
 
 
 @Controller
 public class CommentController {
-	@Autowired CommentRepository repository;
 	
+	@Autowired 
+	CommentRepository repository;
+	
+	@Autowired
+	MetalRepository mrepository;
+	
+	//muista vaihtaa nimi indeksiksi
 	@RequestMapping(value="/commentlist")
 	public String commentList(Model model) {
+		model.addAttribute("metals",mrepository.findAll());
 		model.addAttribute("comment", new Comment());
 		model.addAttribute("comments",repository.findAll());
 		return "commentlist";
