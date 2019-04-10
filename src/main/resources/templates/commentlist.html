@@ -8,8 +8,15 @@
     .container{
     color: red;
     background-color: black;
-    border-radius: 15px;
+    border-radius: 10px;
     border: 1px solid red;
+    
+    }
+    .replycontainer{
+    color: black;
+    background-color: gray;
+    border-radius: 10px;
+    border: 1px solid black;
     
     }
     
@@ -50,8 +57,9 @@
     		<div class="info">Nro
     		<th th:text="${comment.id}"></th>
     		Time and date posted:
-    		<th th:text="${comment.date}"></th>
     		<th th:text="${comment.time}"></th>
+    		<th th:text="${comment.date}"></th>
+    		
     		
     		<button><a th:href="@{/delete/{id}(id=${comment.id})}">Poista kommentti</a></button>
     		<button><a th:href="@{/View/{id}(id=${comment.id})}">Näytä</a></button>
@@ -61,12 +69,21 @@
     		<p class="user" th:text="${comment.username}"></p>
     		</div>
     		<p class="text" th:text="${comment.text}"></p>
+    		
  			</div>
+ 			<div style="clear: both; display: block; height: 5px;"></div>
  			
 				<span th:each="reply,iterStat : ${comment.replies}">
-				<span th:text="${reply.Username}"/>
-				<span th:text="${reply.text}"/>
-					
+				<div class="replycontainer">
+				<th th:text="${reply.replyid}"/>
+				Time and date posted:
+				<th th:text="${reply.replytime}"/>
+				<th th:text="${reply.replydate}"/>
+    			
+    		
+				<p th:text="${reply.Username}"/>
+				<p th:text="${reply.text}"/>
+					</div>
 					<li th:if="${!iterStat.last}"></li>
 				</span>
 				   		

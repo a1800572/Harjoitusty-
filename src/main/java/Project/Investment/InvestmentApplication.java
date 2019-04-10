@@ -36,7 +36,7 @@ public class InvestmentApplication {
 			crepository.save(new Comment("Vilma","bbbbbbbbbbbbbb"));
 			crepository.save(new Comment("Juho","ccccccccccccccccccccc"));
 			
-			rrepository.save(new Reply("Pertti", "ddddddddddddddddddddd"));
+			
 			
 			
 			log.info("nouda kommentit");
