@@ -44,12 +44,29 @@
 </head>
 <body>
 
+		
 
-		<h1>Tapahtumat</h1>
+
+		<h1 th:text = "#{proceedings.text}"></h1>
+		
+		
+		<a href="/commentlist?language=en">
+		<button class="btn btn-primary btn-sm " th:text="#{englishbutton.text}"></button>
+		</a>
+		<div style="clear: both; display: block; height: 15px;"></div>
+		
+		
+		<a href="/commentlist?language=fr">
+		<button class="btn btn-primary btn-sm" th:text="#{frenchbutton.text}"></button>
+		</a>
+		<div style="clear: both; display: block; height: 15px;"></div>
+		
 		
 		<a href="/newmetal">
-		<button class="btn btn-success ">Lisää Metalli</button>
+		<button class="btn btn-success btn-sm" th:text="#{addbutton.text}">
+		</button>
 		</a>
+		
 		<div style="clear: both; display: block; height: 15px;"></div>
 
 
@@ -66,7 +83,7 @@
     	
     	
 		
-			<h1 th:text = "#{welcome.text}"></h1>
+			<h1 th:text = "#{comments.text}"></h1>
 		
 		
 		
@@ -77,6 +94,7 @@
 			<input type="submit" value="Jätä kommentti"></input>
 			<div style="clear: both; display: block; height: 5px;"></div>
 			</form>
+			
 
    		 
 			
@@ -90,11 +108,11 @@
     		
     		
     		<a th:href="@{/delete/{id}(id=${comment.id})}">
-    		<button class="btn btn-danger btn-sm">Poista kommentti</button>
+    		<button class="btn btn-danger btn-sm" th:text="#{deletecommentbutton.text}"></button>
     		</a>
     		
     		<a th:href="@{/View/{id}(id=${comment.id})}">
-    		<button class="btn btn-warning btn-sm">Näytä</button>
+    		<button class="btn btn-warning btn-sm" th:text="#{displaybutton.text}"></button>
     		</a>
     		
     		<a th:href="@{/addcommentreply/{id}(id=${comment.id})}">
