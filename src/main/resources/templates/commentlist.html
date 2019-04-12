@@ -40,6 +40,34 @@
     word-wrap: break-word;
    	width: 100%;
     }
+    
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
     </style>
 </head>
 <body>
@@ -50,20 +78,30 @@
 		<h1 th:text = "#{proceedings.text}"></h1>
 		
 		
+		<div class="dropdown">
+  		<button class="btn btn-success">Kieli valikko</button>
+  		<div class="dropdown-content">
+		
 		<a href="/commentlist?language=en">
-		<button class="btn btn-primary btn-sm " th:text="#{englishbutton.text}"></button>
+		<button class="btn btn-primary" th:text="#{englishbutton.text}"></button>
 		</a>
-		<div style="clear: both; display: block; height: 15px;"></div>
 		
 		
 		<a href="/commentlist?language=fr">
-		<button class="btn btn-primary btn-sm" th:text="#{frenchbutton.text}"></button>
+		<button class="btn btn-primary" th:text="#{frenchbutton.text}"></button>
 		</a>
-		<div style="clear: both; display: block; height: 15px;"></div>
+		
+		
+		<a href="/commentlist?language=fi">
+		<button class="btn btn-primary" th:text="#{finnishbutton.text}"></button>
+		</a>
+		
+		</div>
+		</div>
 		
 		
 		<a href="/newmetal">
-		<button class="btn btn-success btn-sm" th:text="#{addbutton.text}">
+		<button class="btn btn-success btn-xs" th:text="#{addbutton.text}">
 		</button>
 		</a>
 		
@@ -116,7 +154,7 @@
     		</a>
     		
     		<a th:href="@{/addcommentreply/{id}(id=${comment.id})}">
-    		<button class="btn btn-success btn-sm">Add reply</button>
+    		<button class="btn btn-success btn-sm" th:text="#{addreplybutton.text}"></button>
     		</a>
     		
     		

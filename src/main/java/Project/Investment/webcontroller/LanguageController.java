@@ -17,5 +17,10 @@ public class LanguageController {
 	public String French() {
 	return "redirect:commentlist";
 	}
+	
+	@RequestMapping(value="/commentlist?language=fi", method=RequestMethod.GET)
+	public String Finnish() {
+		return "redirect:commentlist";
+	}
 
 }
