@@ -19,17 +19,31 @@ public class Metal {
 	@JoinColumn(name="metaltypeid")
 	private Metaltype metaltype;
 	
+	@ManyToOne
+	@JoinColumn(name="transactionid")
+	private Metaltransaction metaltransaction;
+	
+	
 	public Metal() {}
 	
-	public Metal(int ammount, double price, Metaltype metaltype) {
+	public Metal(int ammount, double price, Metaltype metaltype, Metaltransaction metaltransaction) {
 		super();
 		this.ammount=ammount;
 		this.price=price;
 		this.metaltype=metaltype;
+		this.metaltransaction=metaltransaction;
 	}
 
 	
 	
+	public Metaltransaction getMetaltransaction() {
+		return metaltransaction;
+	}
+
+	public void setMetaltransaction(Metaltransaction metaltransaction) {
+		this.metaltransaction = metaltransaction;
+	}
+
 	public Metaltype getMetaltype() {
 		return metaltype;
 	}
@@ -65,8 +79,8 @@ public class Metal {
 	
 	@Override
 	public String toString() {
-		if (this.metaltype != null)
-		return "id"+metalid+"ammount"+ammount+price+this.getMetaltype();
+		if (this.metaltype != null && this.metaltransaction != null)
+		return "id"+metalid+"ammount"+ammount+price+this.getMetaltype()+this.getMetaltransaction();
 		else
 		return "id"+metalid+"ammount"+ammount+price;
 		

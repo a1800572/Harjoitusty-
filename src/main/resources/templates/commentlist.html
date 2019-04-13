@@ -128,6 +128,7 @@
 		<th>Ammount/grams</th>
 		<th>Price(EUR)/gram</th>
 		<th>Metal type</th>
+		<th>Transaction</th>
 		<th>Sum</th>
 		</tr>
 		  
@@ -154,7 +155,15 @@
     	
     	<td th:text="${metal.price}"></td>
     	<td th:text="${metal.metaltype.type}"></td>
-    	<td th:text="${metal.price*metal.ammount}"></td>	
+    	<td th:text="${metal.metaltransaction.operation}"></td>
+    	<td>
+    	<span th:if="${metal.metaltransaction.operation == 'Buy'}">
+    	<span th:text="${metal.price*metal.ammount*(-1)}" />
+    	</span>
+    	<span th:if="${metal.metaltransaction.operation == 'Sell'}">
+    	<span th:text="${metal.price*metal.ammount}" />
+    	</span>	
+    	</td>
     	</tr>
     	</table>
     	

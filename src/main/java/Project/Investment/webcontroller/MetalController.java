@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import Project.Investment.domain.Metal;
 import Project.Investment.domain.MetalRepository;
+import Project.Investment.domain.Metaltransaction;
+import Project.Investment.domain.MetaltransactionRepository;
 import Project.Investment.domain.MetaltypeRepository;
 
 
@@ -20,11 +22,15 @@ public class MetalController {
 	@Autowired
 	MetaltypeRepository mtrepository;
 	
+	@Autowired
+	MetaltransactionRepository trepository;
+	
 	
 		@RequestMapping(value="/newmetal", method=RequestMethod.GET)
 		public String lisääuusimetalli(Model model) {
 		model.addAttribute("metal", new Metal());
 		model.addAttribute("metaltypes", mtrepository.findAll());
+		model.addAttribute("metaltransactions",trepository.findAll());
 		return "newmetal";
 		
 	}

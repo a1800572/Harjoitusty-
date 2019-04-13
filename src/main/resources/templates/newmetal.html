@@ -28,8 +28,15 @@
 		<select id="deplist" th:field="*{metaltype}" class="form-control-sm col-sm-2">
        	<option th:each="metaltype: ${metaltypes}" th:value="${metaltype.metaltypeid}" th:text="${metaltype.type}"></option>
     	</select>
-    	
 		<br>
+		
+		<div style="clear: both; display: block; height: 15px;" ></div>
+		
+		<label for="tolist">Transaction operation</label>
+		<br>
+		<select id="tolist" th:field="*{metaltransaction}" class="form-control-sm col-sm-2">
+       	<option th:each="metaltransaction: ${metaltransactions}" th:value="${metaltransaction.transactionid}" th:text="${metaltransaction.operation}"></option>
+    	</select>
 		<div style="clear: both; display: block; height: 15px;" ></div>
 		
 		<input class="btn btn-success" type="submit" value="Lähetä"/>

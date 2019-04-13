@@ -11,6 +11,8 @@ import Project.Investment.domain.Comment;
 import Project.Investment.domain.CommentRepository;
 import Project.Investment.domain.Metal;
 import Project.Investment.domain.MetalRepository;
+import Project.Investment.domain.Metaltransaction;
+import Project.Investment.domain.MetaltransactionRepository;
 import Project.Investment.domain.Metaltype;
 import Project.Investment.domain.MetaltypeRepository;
 import Project.Investment.domain.ReplyRepository;
@@ -29,7 +31,7 @@ public class InvestmentApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository, MetaltypeRepository mtrepository) {
+	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository, MetaltypeRepository mtrepository, MetaltransactionRepository trepository) {
 		return (args)->{
 			log.info("pari kommentia");
 			
@@ -38,9 +40,12 @@ public class InvestmentApplication {
 			mtrepository.save(new Metaltype("Platinum"));
 			mtrepository.save(new Metaltype("Palladium"));
 			
+			trepository.save(new Metaltransaction("Buy"));
+			trepository.save(new Metaltransaction("Sell"));
+			
 			//testi metallit
-			mrepository.save(new Metal(12, 0, mtrepository.findByType("Gold").get(0)));
-			mrepository.save(new Metal(3, 0, mtrepository.findByType("Silver").get(0)));
+			mrepository.save(new Metal(12, 0, mtrepository.findByType("Gold").get(0), trepository.findByOperation("Buy").get(0)));
+			mrepository.save(new Metal(3, 0, mtrepository.findByType("Silver").get(0), trepository.findByOperation("Sell").get(0)));
 			
 			
 			//testi kommentit
