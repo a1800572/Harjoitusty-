@@ -35,6 +35,8 @@ public class InvestmentApplication {
 			
 			mtrepository.save(new Metaltype("Gold"));
 			mtrepository.save(new Metaltype("Silver"));
+			mtrepository.save(new Metaltype("Platinum"));
+			mtrepository.save(new Metaltype("Palladium"));
 			
 			//testi metallit
 			mrepository.save(new Metal(12, 0, mtrepository.findByType("Gold").get(0)));

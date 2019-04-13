@@ -13,7 +13,7 @@ public class Metal {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long metalid;
 	private int ammount;
-	private int price;
+	private double price;
 	
 	@ManyToOne
 	@JoinColumn(name="metaltypeid")
@@ -21,7 +21,7 @@ public class Metal {
 	
 	public Metal() {}
 	
-	public Metal(int ammount, int price, Metaltype metaltype) {
+	public Metal(int ammount, double price, Metaltype metaltype) {
 		super();
 		this.ammount=ammount;
 		this.price=price;
@@ -38,11 +38,11 @@ public class Metal {
 		this.metaltype = metaltype;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 

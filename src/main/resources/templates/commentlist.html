@@ -126,8 +126,9 @@
 		<tr>
 		<th>Id</th>
 		<th>Ammount/grams</th>
-		<th>Price/gram</th>
+		<th>Price(EUR)/gram</th>
 		<th>Metal type</th>
+		<th>Sum</th>
 		</tr>
 		  
     	<tr th:each = "metal : ${metals}">
@@ -135,16 +136,25 @@
     	<td th:text="${metal.ammount}"></td>
     	
     	<span th:if="${metal.metaltype.type == 'Gold'}">
-    	<span th:number="${metal.price=35}" />
+    	<span th:number="${metal.price=36.76}" />
     	</span>
     	
     	<span th:if="${metal.metaltype.type == 'Silver'}">
-    	<span th:number="${metal.price=2}" />
+    	<span th:number="${metal.price=0.43}" />
+    	</span>
+    	
+    	<span th:if="${metal.metaltype.type == 'Palladium'}">
+    	<span th:number="${metal.price=39.02}" />
+    	</span>
+    	
+    	<span th:if="${metal.metaltype.type == 'Platinum'}">
+    	<span th:number="${metal.price=25.21}" />
     	</span>
     	
     	
     	<td th:text="${metal.price}"></td>
-    	<td th:text="${metal.metaltype.type}"></td>	
+    	<td th:text="${metal.metaltype.type}"></td>
+    	<td th:text="${metal.price*metal.ammount}"></td>	
     	</tr>
     	</table>
     	
