@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Metal {
@@ -11,16 +13,39 @@ public class Metal {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long metalid;
 	private int ammount;
+	private int price;
+	
+	@ManyToOne
+	@JoinColumn(name="metaltypeid")
+	private Metaltype metaltype;
 	
 	public Metal() {}
 	
-	public Metal(int ammount) {
+	public Metal(int ammount, int price, Metaltype metaltype) {
 		super();
 		this.ammount=ammount;
+		this.price=price;
+		this.metaltype=metaltype;
 	}
 
 	
 	
+	public Metaltype getMetaltype() {
+		return metaltype;
+	}
+
+	public void setMetaltype(Metaltype metaltype) {
+		this.metaltype = metaltype;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	public Long getMetalid() {
 		return metalid;
 	}
@@ -40,7 +65,10 @@ public class Metal {
 	
 	@Override
 	public String toString() {
-		return "id"+metalid+"ammount"+ammount;
+		if (this.metaltype != null)
+		return "id"+metalid+"ammount"+ammount+price+this.getMetaltype();
+		else
+		return "id"+metalid+"ammount"+ammount+price;
 		
 	}
 	

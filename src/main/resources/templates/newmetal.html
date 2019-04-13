@@ -23,9 +23,18 @@
 
 <div style="clear: both; display: block; height: 15px;" ></div>
 
-<input class="btn btn-success" type="submit" value="Lähetä"/>
-<input class="btn btn-success" type="reset" value="Reset" />
-</form>
-</body>
-</html>
+		<label for="deplist">Metaltypes</label>
+		<br>
+		<select id="deplist" th:field="*{metaltype}" class="form-control-sm col-sm-2">
+       	<option th:each="metaltype: ${metaltypes}" th:value="${metaltype.metaltypeid}" th:text="${metaltype.type}"></option>
+    	</select>
+    	
+		<br>
+		<div style="clear: both; display: block; height: 15px;" ></div>
+		
+		<input class="btn btn-success" type="submit" value="Lähetä"/>
+		<input class="btn btn-success" type="reset" value="Reset" />
+		</form>
+		</body>
+		</html>
 

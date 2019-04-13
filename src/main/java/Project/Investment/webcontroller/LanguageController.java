@@ -20,7 +20,12 @@ public class LanguageController {
 	
 	@RequestMapping(value="/commentlist?language=fi", method=RequestMethod.GET)
 	public String Finnish() {
-		return "redirect:commentlist";
+	return "redirect:commentlist";
+	}
+	
+	@RequestMapping(value="/commentlist?language=ru", method=RequestMethod.GET)
+	public String Russia() {
+	return "redirect:commentlist";
 	}
 
 }

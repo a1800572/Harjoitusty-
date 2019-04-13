@@ -11,7 +11,8 @@ import Project.Investment.domain.Comment;
 import Project.Investment.domain.CommentRepository;
 import Project.Investment.domain.Metal;
 import Project.Investment.domain.MetalRepository;
-import Project.Investment.domain.Reply;
+import Project.Investment.domain.Metaltype;
+import Project.Investment.domain.MetaltypeRepository;
 import Project.Investment.domain.ReplyRepository;
 
 
@@ -28,13 +29,16 @@ public class InvestmentApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository) {
+	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository, MetaltypeRepository mtrepository) {
 		return (args)->{
 			log.info("pari kommentia");
 			
+			mtrepository.save(new Metaltype("Gold"));
+			mtrepository.save(new Metaltype("Silver"));
+			
 			//testi metallit
-			mrepository.save(new Metal(12));
-			mrepository.save(new Metal(3));
+			mrepository.save(new Metal(12, 0, mtrepository.findByType("Gold").get(0)));
+			mrepository.save(new Metal(3, 0, mtrepository.findByType("Silver").get(0)));
 			
 			
 			//testi kommentit
@@ -48,6 +52,11 @@ public class InvestmentApplication {
 			log.info("nouda kommentit");
 			for (Comment comment : crepository.findAll()) {
 				log.info(comment.toString());
+			}
+			
+			log.info("fetch all metals");
+			for (Metal metal : mrepository.findAll()) {
+				log.info(metal.toString());
 			}
 		};
 		
