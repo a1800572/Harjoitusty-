@@ -11,6 +11,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -96,6 +98,7 @@ public class Comment {
 	}
 
 	@ManyToMany(cascade = CascadeType.MERGE)
+	@JsonIgnore
 	@JoinTable(name = "comment_reply", joinColumns = { @JoinColumn(name = "id") }, inverseJoinColumns = { @JoinColumn(name = "replyid") })
 	public Set<Reply> getReplies() {
 		return this.replies;

@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Reply {
@@ -33,7 +35,8 @@ public class Reply {
 	
 	
 	
-	@ManyToMany(mappedBy = "replies")    
+	@ManyToMany(mappedBy = "replies")
+	@JsonIgnore
     private Set<Comment> comments; 
 	
 	public Reply() {}

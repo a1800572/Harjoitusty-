@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Metaltransaction {
 	@Id
@@ -18,6 +20,7 @@ public class Metaltransaction {
 	
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="metaltransaction")
+	@JsonIgnore
 	private List<Metal> metals;
 	
 	
