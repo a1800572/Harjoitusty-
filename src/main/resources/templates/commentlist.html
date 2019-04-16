@@ -84,6 +84,10 @@
 		
 		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 		
+		<a href="/userlist">
+		<button class="btn btn-success btn-sm">Users</button>
+		</a>
+		
 		<div class="col-md-4" style="padding:20px 0">
 		<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Kirjaudu ulos" class="btn btn-danger btn-sm"/>
@@ -137,6 +141,7 @@
 		<th>Metal type</th>
 		<th>Transaction</th>
 		<th>Sum</th>
+		<th>Action</th>
 		</tr>
 		  
     	<tr th:each = "metal : ${metals}">
@@ -171,6 +176,12 @@
     	<span th:text="${metal.price*metal.ammount}" />
     	</span>	
     	</td>
+    	
+    		<td>
+    		<a th:href="@{/removemetal/{id}(id=${metal.metalid})}">
+    		<button class="btn btn-danger">Poista</button>
+    		</a>
+    		</td>
     	</tr>
     	</table>
     	

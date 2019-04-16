@@ -23,6 +23,15 @@ public class UserController {
 	
 	@Autowired UserRepository repository;
 	
+	
+	@RequestMapping(value="/userlist")
+	public String userlist(Model model) {
+		model.addAttribute("users", repository.findAll());
+		return "userlist";
+	}
+	
+	
+	
 	@RequestMapping(value="signup")
 	public String addUser(Model model) {
 		model.addAttribute("signupform", new SignupForm());
