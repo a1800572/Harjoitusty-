@@ -23,6 +23,12 @@ public class CommentController {
 	MetalRepository mrepository;
 	
 	
+	@RequestMapping(value="/login")
+	public String login() {	
+        return "login";
+    }	
+	
+	
 	//index controlleriin
 	//muista vaihtaa nimi indek
 	@RequestMapping(value="/commentlist")

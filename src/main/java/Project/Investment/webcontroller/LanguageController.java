@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LanguageController {
 	
 	//Englanniksi
-	@RequestMapping(value="/commentlist?language=en", method=RequestMethod.GET)
+	@RequestMapping(value="/commentlist?language=us", method=RequestMethod.GET)
 	public String English() {
 	return "redirect:commentlist";	
 	}

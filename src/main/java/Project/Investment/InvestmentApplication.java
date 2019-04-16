@@ -16,6 +16,8 @@ import Project.Investment.domain.MetaltransactionRepository;
 import Project.Investment.domain.Metaltype;
 import Project.Investment.domain.MetaltypeRepository;
 import Project.Investment.domain.ReplyRepository;
+import Project.Investment.domain.User;
+import Project.Investment.domain.UserRepository;
 
 
 
@@ -31,7 +33,7 @@ public class InvestmentApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository, MetaltypeRepository mtrepository, MetaltransactionRepository trepository) {
+	public CommandLineRunner comment(CommentRepository crepository, ReplyRepository rrepository, MetalRepository mrepository, MetaltypeRepository mtrepository, MetaltransactionRepository trepository, UserRepository urepository) {
 		return (args)->{
 			log.info("pari kommentia");
 			
@@ -53,6 +55,12 @@ public class InvestmentApplication {
 			crepository.save(new Comment("Vilma","bbbbbbbbbbbbbb"));
 			crepository.save(new Comment("Juho","ccccccccccccccccccccc"));
 			
+			
+			User user1 = new User("käyttäjä", "$2a$12$KDF4TyXvkV9D/sp1K0VZY.ml/ZilUgn1DfMDR/d.iukHoi6s3JCbi", "valtteri.koivunen@hotmail.com","566654344", "USER");
+			//user2 salasana on bookstore
+			User user2 = new User("admin", "$2a$12$pL0lx/TRYFjNvX30hmJX7u7WJ3UALMWxztTpE9dylI5nuyC2L.VOi", "admin@hotmail.com", "6767474734", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
 			
 			
 			

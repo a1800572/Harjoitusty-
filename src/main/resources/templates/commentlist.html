@@ -82,6 +82,13 @@
 <body>
 
 		
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+		
+		<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Kirjaudu ulos" class="btn btn-danger btn-sm"/>
+		</form>
+		</div>
 
 
 		<h1 th:text = "#{proceedings.text}"></h1>
@@ -91,7 +98,7 @@
   		<button class="btn btn-success btn-sm" th:text="#{languagebutton.text}"></button>
   		<div class="dropdown-content">
 		
-		<a href="/commentlist?language=en">
+		<a href="/commentlist?language=us">
 		<button class="btn btn-primary" th:text="#{englishbutton.text}"></button>
 		</a>
 		

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lisää käyttäjä</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Luo tunnus</h1>
+     <div class="col-md-4">
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+		
+			<div>
+				<label> Käyttäjäntunnus :<input type="text" th:field="*{username}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
+			</div>
+			
+			<div>
+				<label> Salasana :<input type="password" th:field="*{password}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>	
+			</div>
+			
+			<div>
+				<label> Re-type Salasana: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
+			</div>
+			
+			<div>
+				<label> Sähköposti :<input type="text" th:field="*{email}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>	
+			</div>
+			
+			<div>
+				<label> Puhelin-numero :<input type="text" th:field="*{phone}" class="form-control"/></label>
+				<p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</p>	
+			</div>
+			
+			<input type="submit" class="btn btn-success" value="Hyväksy"></input>		
+		</form>
+	</div>
+</body>
+</html>
