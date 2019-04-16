@@ -88,7 +88,7 @@
 		<button class="btn btn-success btn-sm">Users</button>
 		</a>
 		
-		<div class="col-md-4" style="padding:20px 0">
+		<div class="col-md-4" style="padding:20px 0" sec:authorize ="hasAuthority('ADMIN') or hasAuthority('USER')">
 		<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Kirjaudu ulos" class="btn btn-danger btn-sm"/>
 		</form>
@@ -136,12 +136,12 @@
 		<table class="table table-striped">
 		<tr>
 		<th>Id</th>
-		<th>Ammount/grams</th>
-		<th>Price(EUR)/gram</th>
-		<th>Metal type</th>
-		<th>Transaction</th>
-		<th>Total (EUR€)</th>
-		<th>Action</th>
+		<th th:text="#{ammount.text}"></th>
+		<th th:text="#{price.text}"></th>
+		<th th:text="#{mtype.text}"></th>
+		<th th:text="#{transaction.text}"></th>
+		<th th:text="#{total.text}"></th>
+		<th th:text="#{act.text}"></th>
 		</tr>
 		  
     	<tr th:each = "metal : ${metals}">
@@ -179,12 +179,12 @@
     	
     		<td>
     		<a th:href="@{/removemetal/{id}(id=${metal.metalid})}" sec:authorize="hasAuthority('ADMIN')">
-    		<button class="btn btn-danger">Poista</button>
+    		<button class="btn btn-danger" th:text="#{metaldelbutton.text}"></button>
     		</a>
     		
 
     		<a th:href="@{/editmetal/{id}(id=${metal.metalid})}" sec:authorize="hasAuthority('USER')">
-    		<button class="btn btn-primary">Päivitä</button>
+    		<button class="btn btn-primary" th:text="#{updatebutton.text}"></button>
     		</a>
     		</td>
     	</tr>
@@ -196,7 +196,7 @@
 		
 		
 		
-			<form th:object="${comment}" th:action="@{/savecomment}" action="#" method="post">
+			<form th:object="${comment}" th:action="@{/savecomment}" action="#" method="post" sec:authorize="hasAuthority('ADMIN') or hasAuthority('USER')">
 			
 			<textarea id="komment" th:field="*{text}" rows="2" cols="65"></textarea>
 			<div style="clear: both; display: block; height: 5px;"></div>
@@ -224,7 +224,7 @@
     		<button class="btn btn-warning btn-xs" th:text="#{displaybutton.text}"></button>
     		</a>
     		
-    		<a th:href="@{/addcommentreply/{id}(id=${comment.id})}">
+    		<a th:href="@{/addcommentreply/{id}(id=${comment.id})}" sec:authorize="hasAuthority('ADMIN') or hasAuthority('USER')">
     		<button class="btn btn-success btn-xs" th:text="#{addreplybutton.text}"></button>
     		</a>
     		

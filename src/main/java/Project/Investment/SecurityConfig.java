@@ -36,12 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         
         //autorisointi
         .authorizeRequests()
-        .antMatchers("/userlist", "/deleteuser/{id}", "/View/{id}", "/delete/{id}", "/removemetal/{id}")
+        .antMatchers("/userlist", "/deleteuser/{id}", "/View/{id}", "/delete/{id}", "/removemetal/{id}", "/logout")
         .hasAuthority("ADMIN")
         .and()
         
         .authorizeRequests()
-        .antMatchers("/editmetal/{id}", "/newmetal", "/savemetal")
+        .antMatchers("/editmetal/{id}", "/newmetal", "/savemetal", "/logout")
         .hasAuthority("USER")
         .and()
         
