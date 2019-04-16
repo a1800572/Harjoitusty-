@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>comments</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -81,10 +81,10 @@
 </head>
 <body>
 
+		<h3 th:text="#{welcome.text}"></h3>
+		<h3 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h3>
 		
-		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
-		
-		<a href="/userlist">
+		<a href="/userlist" sec:authorize="hasAuthority('ADMIN')">
 		<button class="btn btn-success btn-sm">Users</button>
 		</a>
 		
@@ -125,7 +125,7 @@
 		</div>
 		
 		
-		<a href="/newmetal">
+		<a href="/newmetal" sec:authorize="hasAuthority('USER')">
 		<button class="btn btn-success btn-sm" th:text="#{addbutton.text}">
 		</button>
 		</a>
@@ -140,7 +140,7 @@
 		<th>Price(EUR)/gram</th>
 		<th>Metal type</th>
 		<th>Transaction</th>
-		<th>Sum</th>
+		<th>Total (EUR€)</th>
 		<th>Action</th>
 		</tr>
 		  
@@ -178,8 +178,13 @@
     	</td>
     	
     		<td>
-    		<a th:href="@{/removemetal/{id}(id=${metal.metalid})}">
+    		<a th:href="@{/removemetal/{id}(id=${metal.metalid})}" sec:authorize="hasAuthority('ADMIN')">
     		<button class="btn btn-danger">Poista</button>
+    		</a>
+    		
+
+    		<a th:href="@{/editmetal/{id}(id=${metal.metalid})}" sec:authorize="hasAuthority('USER')">
+    		<button class="btn btn-primary">Päivitä</button>
     		</a>
     		</td>
     	</tr>
@@ -211,11 +216,11 @@
     		<th th:text="${comment.date}"></th>
     		
     		
-    		<a th:href="@{/delete/{id}(id=${comment.id})}">
+    		<a th:href="@{/delete/{id}(id=${comment.id})}" sec:authorize="hasAuthority('ADMIN')">
     		<button class="btn btn-danger btn-xs" th:text="#{deletecommentbutton.text}"></button>
     		</a>
     		
-    		<a th:href="@{/View/{id}(id=${comment.id})}">
+    		<a th:href="@{/View/{id}(id=${comment.id})}" sec:authorize="hasAuthority('ADMIN')">
     		<button class="btn btn-warning btn-xs" th:text="#{displaybutton.text}"></button>
     		</a>
     		

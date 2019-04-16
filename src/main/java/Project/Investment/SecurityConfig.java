@@ -34,8 +34,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .and()
         
         
+        //autorisointi
         .authorizeRequests()
-        .antMatchers("/signup", "/saveuser")
+        .antMatchers("/userlist", "/deleteuser/{id}", "/View/{id}", "/delete/{id}", "/removemetal/{id}")
+        .hasAuthority("ADMIN")
+        .and()
+        
+        .authorizeRequests()
+        .antMatchers("/editmetal/{id}", "/newmetal", "/savemetal")
+        .hasAuthority("USER")
+        .and()
+        
+        
+        .authorizeRequests()
+        .antMatchers("/signup", "/saveuser", "/commentlist?language=us", "/commentlist?language=fr", "/commentlist?language=fi", "/commentlist?language=ru", "/commentlist", "/addcommentreply/{id}", "/comment/{id}/replies")
         .permitAll()
         .and()
         

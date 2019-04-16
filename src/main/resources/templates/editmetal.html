@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8 "/>
+<title>Update Metal</title>
+</head>
+<body>
+
+
+<form method="post" action="#" th:action=@{../savemetal} th:object=${metal}>
+<h1>Update metal</h1>
+
+<input type="hidden" th:field="*{metalid}"/>
+
+<label>Write new ammount:</label>
+<br>
+<input type="number" th:field=${metal.ammount} name="ammount" id="ammount"/>
+<br>
+
+
+<label for="typelist">Choose new metaltype:</label>
+<br>
+<select id="typelist" th:field="*{metaltype}" class="form-control">
+<option th:each="metaltype: ${metaltypes}" th:value="${metaltype.metaltypeid}" th:text="${metaltype.type}"></option>
+</select>
+<br>
+
+<label for="tranlist">Choose new transaction:</label>
+<br>
+<select id="tranlist" th:field="*{metaltransaction}" class="form-control">
+<option th:each="metaltransaction: ${metaltransactions}" th:value="${metaltransaction.transactionid}" th:text="${metaltransaction.operation}"></option>
+</select>
+<br>
+<input type="submit" value="Tallenna"/>
+
+
+ 
+</form>
+</body>
+</html>

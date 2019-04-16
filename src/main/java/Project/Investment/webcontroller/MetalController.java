@@ -36,7 +36,7 @@ public class MetalController {
 		
 	}
 		
-		@RequestMapping(value="savemetal", method=RequestMethod.POST)
+		@RequestMapping(value="/savemetal", method=RequestMethod.POST)
 		public String savemetal(Metal metal) {
 			mrepository.save(metal);
 			return "redirect:commentlist";
@@ -47,5 +47,13 @@ public class MetalController {
 			mrepository.deleteById(metalId);
 			return "redirect:../commentlist";
 			
+		}
+		
+		@RequestMapping(value="/editmetal/{id}")
+		public String editmetal(@PathVariable("id") Long metalId, Model model) {
+			model.addAttribute("metal", mrepository.findById(metalId));
+			model.addAttribute("metaltypes", mtrepository.findAll());
+			model.addAttribute("metaltransactions", trepository.findAll());
+			return "editmetal";
 		}
 }

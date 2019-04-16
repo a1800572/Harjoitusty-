@@ -13,11 +13,16 @@
 			<th>Id</th>
 			<th>Username</th>
 			<th>PasswordHash</th>
+			<th>Actions</th>
 		</tr>  
     	<tr th:each = "user : ${users}">
     		<td th:text="${user.id}"></td>
     		<td th:text="${user.username}"></td>
-    		<td th:text="${user.passwordHash}"></td>		
+    		<td th:text="${user.passwordHash}"></td>
+    		<td><a th:href="@{/deleteuser/{id}(id=${user.id})}">
+    		<button class="btn btn-danger">Poista käyttäjä</button>
+    		</a></td>	
+    			
     	</tr>
      </table>
 

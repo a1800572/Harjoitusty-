@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,6 +29,15 @@ public class UserController {
 	public String userlist(Model model) {
 		model.addAttribute("users", repository.findAll());
 		return "userlist";
+	}
+	
+	
+	
+	@RequestMapping(value="/deleteuser/{id}", method=RequestMethod.GET)
+	public String deleteuser(@PathVariable("id") Long userId, Model model) {
+		repository.deleteById(userId);
+		return "redirect:../userlist";
+		
 	}
 	
 	
