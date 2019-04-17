@@ -2,8 +2,10 @@ package Project.Investment;
 
 import java.util.Locale;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -16,6 +18,15 @@ public class ApplicationConfig implements WebMvcConfigurer {
 	
 	//http://localhost:8080/commentlist?language=fr ---> viesti näkyy ranskaksi
 	//http://localhost:8080/commentlist?language=en ---> viesti näkyy englanniksi
+	
+	
+	@Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
+    }
 	
 	@Bean
     public LocaleResolver localeResolver(){
