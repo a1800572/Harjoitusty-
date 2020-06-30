@@ -64,22 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
           .permitAll()
           .and()
       .logout()
-          .permitAll()
-          .and()
+          .permitAll();
+          
         
         
-        //-->sallii h2-console näkymän
-        .authorizeRequests()
-        .antMatchers("/h2-console/**")
-        .permitAll()
-        .and()
         
-        //-->sallii h2-console näkymän
-        .csrf()
-        .disable()
-        .headers()
-        .frameOptions()
-        .disable();
     }
     
     @Autowired

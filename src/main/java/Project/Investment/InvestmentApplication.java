@@ -55,12 +55,8 @@ public class InvestmentApplication {
 			crepository.save(new Comment("Vilma","bbbbbbbbbbbbbb"));
 			crepository.save(new Comment("Juho","ccccccccccccccccccccc"));
 			
-			//user1 salasana on käyttäjä
-			User user1 = new User("käyttäjä", "$2a$12$KDF4TyXvkV9D/sp1K0VZY.ml/ZilUgn1DfMDR/d.iukHoi6s3JCbi", "valtteri.koivunen@hotmail.com","566654344", "USER");
-			//user2 salasana on admin
-			User user2 = new User("admin", "$2a$12$iwaVYYYtCYEQuxd6/1wpQOcNA0obvPNREjaxUxDBLbqNQlujAb8TW", "admin@hotmail.com", "6767474734", "ADMIN");
-			urepository.save(user1);
-			urepository.save(user2);
+			
+			//käyttäjä data on data.sql tiedostossa
 			
 			
 			

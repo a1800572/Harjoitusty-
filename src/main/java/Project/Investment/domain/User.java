@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Käyttäjä")
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -19,10 +21,10 @@ public class User {
 	@Column(name ="password", nullable=false)
 	private String passwordHash;
 	
-	@Column(name = "email", nullable = false , unique=true)
+	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "phone", nullable = false , unique=true)
+	@Column(name = "phone", nullable = false)
 	private String phone;
 	
 	@Column(name = "role", nullable = false)
